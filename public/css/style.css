@@ -59,7 +59,7 @@ nav .brand-logo {
 }*/
 
 .fullheight {
-  min-height: 70%; /* The header takes up 5% */
+  min-height: 100%; /* The header takes up 5% */
 }
 
 .slider, .slides {
