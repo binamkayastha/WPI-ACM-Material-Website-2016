@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title>WPI ACM</title>
@@ -34,24 +34,23 @@
       </div>
     </nav>
 
-    <div class="row fullheight black equalheight s12">
+    <div class="row fullheight black equalheight s12" ng-controller="EventsCtrl">
       <div class="col s12 indigo darken-2 equalheight">
         <h2 class="center"><br>UpComming Events</h2>
-        <div class="card blue darken-3">
-            <div class="card-content white-text">
-              <span class="card-title">Hack@WPI</span>
-              <p>Campus Wide Hackathon. Details Comming Soon!
-                If you have know companies who would potentially be interested in sponsoring this hackathon, please email Binam at bkayastha AT wpi.edu
-                </p>
+           <div class="card blue darken-3" ng-repeat="event in eventList">
+              <div class="card-content white-text">
+                <span class="card-title">{{event.title}}</span>
+                <p ng-bind-html="event.description"></p>
+              </div>
             </div>
-
-          </div>
       </div>
     </div>
 
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="controllers/controller.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title>WPI ACM</title>
@@ -46,20 +46,22 @@
 
 
     <div class="row fullheight black equalheight s12">
-      <div class="col s12 m4 grey darken-1 equalheight">
+      <div class="col s12 m4 grey darken-1 equalheight" ng-controller="InfoCtrl">
         <h5 class="center">Info</h5>
-        <div class="card grey ">
+
+        <!-- To edit the info section, add another object to JsonBlobs/info.json  -->
+        <div class="card grey" ng-repeat="info in infoList">
           <div class="card-content white-text">
-            <span class="card-title">Meetings</span>
-            <p>Times Undecided</p>
+            <span class="card-title">{{info.title}}</span>
+            <p>{{info.description}}</p>
           </div>
-          <div class="card-action grey darken-2">
-            <a href="https://drive.google.com/drive/folders/0B2rC_Pk6m5DESFFTVzVMcWFZSXc">Minutes</a>
+          <div class="card-action grey darken-2" ng-if="info.linkName != null">
+            <a href={{info.link}}>{{info.linkName}}</a>
           </div>
         </div>
 
         <h5>Calendar</h5>
-        <iframe id="calendar" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=achgl7e3m1pokdo8o1uqis70fk%40group.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="220" height="300" frameborder="0" scrolling="no"></iframe>
+        <iframe id="calendar" onload="updateHeights();" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=achgl7e3m1pokdo8o1uqis70fk%40group.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="220" height="300" frameborder="0" scrolling="no"></iframe>
 
       </div>
       <div class="col s12 m8 indigo darken-2 equalheight">
@@ -68,7 +70,7 @@
 
 
             <div class="card-image">
-              <img class="activator" src="images/ACMGroupPhoto2016.jpg">
+              <img class="activator" src="images/ACMGroupPhoto2016Small.jpg">
             </div>
             <div class="card-content white-text">
               <span class="card-title activator">What we do<i class="material-icons right">more_vert</i></span>
@@ -116,5 +118,7 @@
       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="js/materialize.min.js"></script>
       <script src="js/script.js"></script>
+      <script src="js/angular.min.js"></script>
+      <script src="controllers/controller.js"></script>
   </body>
 </html>
